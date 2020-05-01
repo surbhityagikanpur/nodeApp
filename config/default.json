@@ -1,0 +1,5 @@
+{
+    "dbURL": "mongodb://localhost/mydb",
+    "port": 3000
+}  
+
