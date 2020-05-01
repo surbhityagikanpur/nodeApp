@@ -29,12 +29,12 @@ let updateUser = (req, res) => {
             documents: req.docId
         }
         }, (err, updated) => {
-        if (err) return res.status(400).json({ success: false, message: 'error occured in update bank details', err });
+        if (err) return res.status(400).json({ success: false, message: 'error in update', err });
         else if (updated.n > 0 && updated.nModified > 0) {
-            return res.status(200).json({ success: true, message: 'bank details updated scuccessfully', });
+            return res.status(200).json({ success: true, message: 'scuccessfully', });
         }
         return res.status(201).json({
-            success: false, message: 'bank details already updated',
+            success: false, message: 'already updated',
         });
     })
 
