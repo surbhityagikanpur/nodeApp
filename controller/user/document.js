@@ -22,8 +22,6 @@ let updateUser = (req, res) => {
     let condition = {
         id: req.body.userId
     }
-
-
     userSchema.updateOne(condition, {
         $push: {
             documents: req.docId
@@ -31,7 +29,7 @@ let updateUser = (req, res) => {
         }, (err, updated) => {
         if (err) return res.status(400).json({ success: false, message: 'error in update', err });
         else if (updated.n > 0 && updated.nModified > 0) {
-            return res.status(200).json({ success: true, message: 'scuccessfully', });
+            return res.status(200).json({ success: true, message: 'scuccessfull' });
         }
         return res.status(201).json({
             success: false, message: 'already updated',

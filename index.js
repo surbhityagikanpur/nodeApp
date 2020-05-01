@@ -11,7 +11,7 @@ const express = require('express'),
 // =======================
 // configuration =========
 // =======================
-let port = process.env.PORT || config.port; // used to create, sign, and verify tokens
+let port = process.env.PORT || config.port;
 
 const connection = async () => {
     try{
@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 mongoose.set('useCreateIndex', true)
 mongoose.set('useFindAndModify', false);
 
-app.use(express.static(__dirname + '/public')); 
+//app.use(express.static(__dirname + '/public')); not using this currently 
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');

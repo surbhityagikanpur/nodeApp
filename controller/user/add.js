@@ -4,8 +4,8 @@ const crud = require('../../schema/crud');
 let userData = (req, res) => {
   
     let address = {
-        city: req.body.address.city,
-        phoneNo: req.body.address.phoneNo
+        city: req.body.city,
+        phoneNo: req.body.phoneNo
     }
     let data = {};
     data.name = req.body.name;

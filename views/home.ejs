@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <title>Home Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-8 text-center">
+                        <h1>Add User</h1>
+                        <img src="/images/logo.png" alt="">
+                    </div>
+                    <div class="col-sm-4 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Add User</h5>
+                                <form name="addForm" enctype="application/x-www-form-urlencoded">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            aria-describedby="emailHelp" placeholder="Enter name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Phone No.</label>
+                                        <input type="number" class="form-control" id="phoneNo" name="phoneNo"
+                                            aria-describedby="emailHelp" placeholder="Enter Phone Number" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Email</label>
+                                        <input type="text" class="form-control" id="city" name="city" required
+                                            aria-describedby="emailHelp" placeholder="Enter city">
+                                    </div>
+                                    <!-- <a href="./forgot-password">Forgot Password?</a><br><br> -->
+                                    <button type="button" onclick="addUser()" class="btn btn-primary btn-block">Submit</button>
+                                    <!-- <a href="./register">New User?</a> -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Add Documents</h5>
+                                <form name="documentForm" enctype="application/x-www-form-urlencoded">
+                                    <div class="form-group">
+                                        <label for="username">User id</label>
+                                        <input type="text" class="form-control" id="userId" name="userId"
+                                            aria-describedby="emailHelp" placeholder="This is increment field in user schema (id)" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Text</label>
+                                        <input type="text" class="form-control" id="text" name="text"
+                                            aria-describedby="emailHelp" placeholder="Enter text for document" required>
+                                    </div>
+                                    <!-- <a href="./forgot-password">Forgot Password?</a><br><br> -->
+                                    <button type="button" onclick="addDocument()" class="btn btn-primary btn-block">Submit</button>
+                                    <!-- <a href="./register">New User?</a> -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function addUser() {
+            debugger
+                let data = {
+                name: addForm.name.value,
+                phoneNo: addForm.phoneNo.value,
+                city : addForm.city.value
+            }
+            let response = fetch('/api/user', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                    },
+                body: JSON.stringify(data) 
+            }).then(response => response.json())
+                .then(result =>  {
+                    if(result.success){
+                        location.href = window.location.origin;
+                    }
+            });
+        }
+
+        function addDocument() {
+            debugger
+                let data = {
+                userId: documentForm.userId.value,
+                text: documentForm.text.value
+            }
+            let response = fetch('/api/document', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                    },
+                body: JSON.stringify(data) 
+            }).then(response => response.json())
+                .then(result =>  {
+                    if(result.success){
+                        location.href = window.location.origin;
+                    }
+            });
+        }
+    </script>
+
+   
+</body>
+
+</html>
